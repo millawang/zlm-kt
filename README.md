@@ -1,10 +1,10 @@
 # MVVM with Kotlin 
 MVVM with Kotilin example 
 
-### Re
+### Result
 <p float="left">
-  <img src="/list.png" width="100" />
-  <img src="/detail.png" width="100" />
+  <img src="/list.png" width="200" />
+  <img src="/detail.png" width="200" />
 
 </p>
 
