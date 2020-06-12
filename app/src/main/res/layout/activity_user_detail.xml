@@ -99,7 +99,7 @@
                     android:id="@+id/iv_location"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
-                    android:src="@drawable/ic_my"
+                    android:src="@drawable/ic_location"
                     android:layout_centerVertical="true" />
 
                 <TextView
@@ -122,7 +122,7 @@
                     android:id="@+id/iv_link"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
-                    android:src="@drawable/ic_my"
+                    android:src="@drawable/ic_link"
                     android:layout_centerVertical="true" />
 
                 <TextView
