@@ -37,16 +37,7 @@ public class MyApplication extends Application implements HasActivityInjector {
         ClassicsHeader.REFRESH_HEADER_FAILED = "更新失敗";
         ClassicsHeader.REFRESH_HEADER_UPDATE = "上次更新 M-d HH:mm";
 
-        // Set global header.
-        SmartRefreshLayout.setDefaultRefreshHeaderCreator((Context context, RefreshLayout layout) -> {
-            layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
-            return new ClassicsHeader(context);
-        });
-        // Set global footer.
-        SmartRefreshLayout.setDefaultRefreshFooterCreator((Context context, RefreshLayout layout) -> {
-            layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
-            return new ClassicsFooter(context).setDrawableSize(20);
-        });
+
     }
 
     // -------------------------------------------
