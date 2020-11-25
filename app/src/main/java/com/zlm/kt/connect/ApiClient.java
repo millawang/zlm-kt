@@ -6,10 +6,8 @@ import javax.inject.Singleton;
 @Singleton
 public class ApiClient extends BaseClient implements ApiClientImp {
 
-    // -------------------------------------------
-    private static volatile ApiService api;
+    private static  ApiService api;
 
-    // -------------------------------------------
     @Inject
     public ApiClient() {
         api = createService(ApiService.class);
@@ -26,5 +24,4 @@ public class ApiClient extends BaseClient implements ApiClientImp {
         return api;
     }
 
-    // -------------------------------------------
 }

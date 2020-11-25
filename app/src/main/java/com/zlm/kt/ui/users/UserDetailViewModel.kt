@@ -1,8 +1,8 @@
 package com.zlm.kt.ui.users;
 
 import androidx.lifecycle.MutableLiveData;
+import com.zlm.kt.data.DataManager
 
-import com.zlm.kt.data.DataManager;
 import com.zlm.kt.data.model.api.UserDetailResponse;
 import com.zlm.kt.data.model.api.UsersResponse;
 import com.zlm.kt.other.base.BaseViewModel;
@@ -11,7 +11,7 @@ import com.zlm.kt.other.base.BaseViewModel;
  * @author Milla
  * @create 2020/6/9
  */
-class UserDetailViewModel (dataManager:DataManager):BaseViewModel<UserDetailNavigator>(dataManager) {
+class UserDetailViewModel (dataManager: DataManager):BaseViewModel<UserDetailNavigator>(dataManager) {
 
     private lateinit var user:UsersResponse
     val imgAvatorURL:MutableLiveData<String> = MutableLiveData()
@@ -30,17 +30,17 @@ class UserDetailViewModel (dataManager:DataManager):BaseViewModel<UserDetailNavi
         this.user = user
         this.login.postValue(user.login)
         setIsLoading(true)
-        getCompositeDisposable().add(getDataManager()
-                .getApi().loadUserInfo(user.login)
-                .compose(getSchedulerProvider())
-                .subscribe({ response->
+        getDataManager().api
+                .loadUserInfo(user.login)
+                ?.compose(getSchedulerProvider())
+                ?.subscribe({ response->
                     if (response != null && response is UserDetailResponse)
                     {
                         setUserData(response)
                     }
                     setIsLoading(false) }, { throwable->
                     setIsLoading(false)
-                    throwable.printStackTrace() }))
+                    throwable.printStackTrace() })?.let { getCompositeDisposable().add(it) }
     }
     private fun setUserData(data:UserDetailResponse) {
         this.bio.postValue(data.bio)
