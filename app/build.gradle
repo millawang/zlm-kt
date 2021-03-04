@@ -12,7 +12,7 @@ apply plugin: 'io.fabric'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'realm-android'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 repositories {
     maven { url 'https://maven.fabric.io/public' }
     mavenCentral()
@@ -83,6 +83,10 @@ android {
 
 }
 
+kapt {
+    generateStubs = true
+}
+
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -114,6 +118,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:$rootProject.lifecycleVersion"
     // Dependency injection
     implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
