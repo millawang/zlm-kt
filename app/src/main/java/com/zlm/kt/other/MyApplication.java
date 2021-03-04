@@ -4,14 +4,10 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
-import com.zlm.kt.R;
-import com.zlm.kt.di.component.DaggerAppComponent;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.zlm.kt.di.component.DaggerAppComponent;
 
 import javax.inject.Inject;
 
