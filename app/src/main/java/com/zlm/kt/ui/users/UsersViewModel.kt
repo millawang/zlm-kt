@@ -17,17 +17,17 @@ class UsersViewModel (dataManager: DataManager):BaseViewModel<UsersNavigator>(da
     // -------------------------------------------
     fun setUserList(userlist: List<UsersResponse>) {
         this.users.postValue(userlist)
-        getNavigator().refreshAdapter(userlist)
+        getNavigator()?.refreshAdapter(userlist)
     }
     // -------------------------------------------
     fun back() {
-        getNavigator().back()
+        getNavigator()?.back()
     }
     // -------------------------------------------
     // -------------------------------------------
     fun getUsers() {
         setIsLoading(true)
-        getDataManager()
+        dataManager
                 .api.loadUser()
                 ?.compose(getSchedulerProvider())
                 ?.subscribe({ response->
@@ -38,6 +38,6 @@ class UsersViewModel (dataManager: DataManager):BaseViewModel<UsersNavigator>(da
                     }
                     setIsLoading(false) }, { throwable->
                     setIsLoading(false)
-                    throwable.printStackTrace() })?.let { getCompositeDisposable().add(it) }
+                    throwable.printStackTrace() })?.let { compositeDisposable.add(it) }
     }
 }

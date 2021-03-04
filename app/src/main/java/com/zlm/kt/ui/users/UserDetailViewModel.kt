@@ -21,16 +21,13 @@ class UserDetailViewModel (dataManager: DataManager):BaseViewModel<UserDetailNav
     val location:MutableLiveData<String> = MutableLiveData()
     val link:MutableLiveData<String> = MutableLiveData()
 
-    // -------------------------------------------
-    fun back() {
-        getNavigator().back()
-    }
+
     // -------------------------------------------
     fun getUsers(user:UsersResponse) {
         this.user = user
         this.login.postValue(user.login)
         setIsLoading(true)
-        getDataManager().api
+        dataManager.api
                 .loadUserInfo(user.login)
                 ?.compose(getSchedulerProvider())
                 ?.subscribe({ response->
@@ -40,7 +37,7 @@ class UserDetailViewModel (dataManager: DataManager):BaseViewModel<UserDetailNav
                     }
                     setIsLoading(false) }, { throwable->
                     setIsLoading(false)
-                    throwable.printStackTrace() })?.let { getCompositeDisposable().add(it) }
+                    throwable.printStackTrace() })?.let { compositeDisposable.add(it) }
     }
     private fun setUserData(data:UserDetailResponse) {
         this.bio.postValue(data.bio)
