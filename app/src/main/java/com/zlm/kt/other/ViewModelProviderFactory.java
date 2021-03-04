@@ -39,12 +39,6 @@ public class ViewModelProviderFactory extends ViewModelProvider.NewInstanceFacto
             return (T) new UserDetailViewModel(dataManager);
         }
 
-
-
-
-
-
-
         throw new IllegalArgumentException("Unknown ViewModel Class: " + modelClass.getName());
     }
 
